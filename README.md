@@ -1,118 +1,25 @@
-# Ali Express Spider
+# AliExpress
 
-This is a spider for [AliExpress](https://www.aliexpress.com/) written in Node.
+本仓库是「AliExpress」的安卓版本获取入口，附使用资料索引。
 
-[![npm](https://img.shields.io/npm/v/aliexpress.svg?style=flat-square)](https://www.npmjs.com/package/aliexpress)
-[![Travis](https://img.shields.io/travis/stiekel/aliexpress/master.svg?label=linux&style=flat-square)](https://travis-ci.org/stiekel/aliexpress)
-[![AppVeyor](https://img.shields.io/appveyor/ci/stiekel/aliexpress.svg?label=windows&style=flat-square&style=flat-square)](https://ci.appveyor.com/project/stiekel/aliexpress)
+## 安装文件资源（夸克网盘）
 
-## Install
+> **AliExpress 安装文件资源（夸克网盘）**：[https://pan.quark.cn/s/0c9f6a32bac1](https://pan.quark.cn/s/0c9f6a32bac1)
 
-```sh
-npm install aliexpress --save
-```
+## 官方项目
 
-## Features
+- 上游项目：[stiekel/aliexpress](https://github.com/stiekel/aliexpress)
 
-*   Get Best Selling List
-*   Get Item Detail
-*   Get Search Result
+## 更多资料
 
-## Usage
+- [下载与安装教程](https://github.com/alipymanbu/Android/blob/master/%E5%AE%98%E7%BD%91%E7%89%88APP%E4%B8%8B%E8%BD%BD/AliExpress/%E4%B8%8B%E8%BD%BD%E4%B8%8E%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B.md)
+- [取消订单与修改地址](https://github.com/alipymanbu/Android/blob/master/%E5%AE%98%E7%BD%91%E7%89%88APP%E4%B8%8B%E8%BD%BD/AliExpress/%E5%8F%96%E6%B6%88%E8%AE%A2%E5%8D%95%E4%B8%8E%E4%BF%AE%E6%94%B9%E5%9C%B0%E5%9D%80.md)
+- [售后维权与退款流程](https://github.com/alipymanbu/Android/blob/master/%E5%AE%98%E7%BD%91%E7%89%88APP%E4%B8%8B%E8%BD%BD/AliExpress/%E5%94%AE%E5%90%8E%E7%BB%B4%E6%9D%83%E4%B8%8E%E9%80%80%E6%AC%BE%E6%B5%81%E7%A8%8B.md)
+- [注册登录与语言货币设置](https://github.com/alipymanbu/Android/blob/master/%E5%AE%98%E7%BD%91%E7%89%88APP%E4%B8%8B%E8%BD%BD/AliExpress/%E6%B3%A8%E5%86%8C%E7%99%BB%E5%BD%95%E4%B8%8E%E8%AF%AD%E8%A8%80%E8%B4%A7%E5%B8%81%E8%AE%BE%E7%BD%AE.md)
+- [物流跟踪与收货时间](https://github.com/alipymanbu/Android/blob/master/%E5%AE%98%E7%BD%91%E7%89%88APP%E4%B8%8B%E8%BD%BD/AliExpress/%E7%89%A9%E6%B5%81%E8%B7%9F%E8%B8%AA%E4%B8%8E%E6%94%B6%E8%B4%A7%E6%97%B6%E9%97%B4.md)
+- [购物下单与支付流程](https://github.com/alipymanbu/Android/blob/master/%E5%AE%98%E7%BD%91%E7%89%88APP%E4%B8%8B%E8%BD%BD/AliExpress/%E8%B4%AD%E7%89%A9%E4%B8%8B%E5%8D%95%E4%B8%8E%E6%94%AF%E4%BB%98%E6%B5%81%E7%A8%8B.md)
+- [全部软件目录](https://github.com/alipymanbu/Android/blob/master/%E5%85%A8%E9%83%A8%E8%BD%AF%E4%BB%B6%E7%9B%AE%E5%BD%95.md)
 
-### Get [Best Selling](http://bestselling.aliexpress.com/en) List
+---
 
-```javascript
-var AliExpressSpider = require('aliexpress');
-
-AliExpressSpider.BestSelling.get().then(function(goods){
-  console.log('Best Selling items:', goods);
-});
-```
-
-Result sample:
-
-```javascript
-[
-  {
-    url: 'http://www.aliexpress.com/item/2015-Original-Micro-USB-Cable-with-Colorful-Nylon-Line-Metal-plug-for-iPhone-6-Plus-5s/32470659404.html?scm=1007.13442.37932.0&pvid=6092a253-929e-42ba-b75b-64fba51eed52&tpp=1',
-    name: 'Bastec USB Data Charger Cable Nylon Braided Wire Met...',
-    price: 'US $2.49'
-  }
-]
-```
-
-### Get Good Detail
-
-```javascript
-var AliExpressSpider = require('aliexpress');
-
-AliExpressSpider.Detail(url).then(function(detail){
-  console.log('good detail', detail);
-}, function(reason){
-  // error handler
-});
-```
-
-Result sample:
-
-```javascript
-{
-  productId: '32470659404',
-  name: 'Bastec USB Data Charger Cable Nylon Braided Wire Metal Plug Micro USB Cable for iPhone 6 6s Plus 5s 5 iPad mini Samsung Sony HTC',
-  gallary:
-   [ { alt: 'Bastec USB Data Charger Cable Nylon Braided Wire Metal Plug Micro USB Cable for iPhone 6 6s Plus 5s 5 iPad mini Samsung Sony HTC',
-       src: 'http://g03.a.alicdn.com/kf/HTB1yK1RMVXXXXcDXXXXq6xXFXXXr/Bastec-USB-Data-Charger-Cable-Nylon-Braided-Wire-Metal-Plug-Micro-USB-Cable-for-iPhone-6.jpg_50x50.jpg' },
-     { alt: 'Bastec USB Data Charger Cable Nylon Braided Wire Metal Plug Micro USB Cable for iPhone 6 6s Plus 5s 5 iPad mini Samsung Sony HTC',
-       src: 'http://g04.a.alicdn.com/kf/HTB19ttPLVXXXXa_XFXXq6xXFXXXa/Bastec-USB-Data-Charger-Cable-Nylon-Braided-Wire-Metal-Plug-Micro-USB-Cable-for-iPhone-6.jpg_50x50.jpg' },
-      ...
-    ],
-  property:
-   [ { title: 'Brand Name:', des: 'bastec' },
-     { title: 'Compatible Brand:',
-       des: 'SONY,LG,Toshiba,Apple iPhones,Samsung,Panasonic,HTC' }
-       ...
-     ]
-  orderCount: 40712,
-  feedback:
-   { count: 30435,
-     stars: { '1': 4, '2': 2, '3': 4, '4': 38, '5': 385 },
-     voteCount: 31109,
-     rating: 4.8 }
-},
-```
-
-### Get Search Result
-
-```javascript
-var AliExpressSpider = require('aliexpress');
-
-AliExpressSpider.Search({
-  keyword: 'iPad',
-  page: 2
-}).then(function(d){
-  console.log('d', d)
-})
-```
-
-Result sample:
-
-```javascript
-{
-  url: 'https://www.aliexpress.com/wholesale?catId=0&initiative_id=SB_20170201171227&SearchText=iPad$page=2',
-  list: [
-    {
-      title: '330Pcs/page Cute Cartoon Rubber Home Button Sticker for iPhone 4 4s 5G 5S ipad 2 3 4 5 Practical 4Z338',
-      url: '//www.aliexpress.com/item/330Pcs-lot-Cute-Cartoon-Rubber-Home-Button-Sticker-for-iPhone-4-4s-5G-5S-ipad-2/32247854668.html?ws_ab_test=searchweb0_0,searchweb201602_2_10066_10065_10000073_10068_10000077_10000074_10000032_119_10000030_10000026_10000023_431_10000069_10000068_10060_10062_10056_10055_10000062_10054_10000063_10059_10099_10000020_10000013_10103_10102_10000016_10096_10000056_10000059_10052_10053_10107_10050_10106_10051_10000097_10000094_10000091_10000007_10000050_10084_10083_10000100_10080_10000047_10082_10081_10110_10111_10112_10113_10114_10115_10000089_10000086_10000083_10000041_10000044_10000080_10078_10079_10000038_10073_10000035_10070_10122_10123_10121_10124,searchweb201603_1,afswitch_4,ppcSwitch_5,single_sort_1_default&btsid=e7d779b1-077c-429f-885d-101f9852fb1c&algo_expid=b26690be-6119-4b09-a0e6-95657992ae47-0&algo_pvid=b26690be-6119-4b09-a0e6-95657992ae47',
-      id: '32247854668',
-      price: 'US $1.89',
-      img: 'https://ae01.alicdn.com/kf/HTB1qfmMKFXXXXaFaXXXq6xXFXXXC/330Pcs-lot-Cute-Cartoon-Rubber-Home-Button-Sticker-for-iPhone-4-4s-5G-5S-ipad-2.jpg',
-      store: {
-        name: 'Craft World',
-        url: '//www.aliexpress.com/store/1200888'
-      }
-    },
-    ...
-  ]
-}
-```
+> 本仓库由上游项目 fork 而来，原始说明见[上游仓库](https://github.com/stiekel/aliexpress)。
